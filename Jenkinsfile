@@ -33,7 +33,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', dockerHub_creds_id) {
                         sh """
-                            docker tag ${DOCKER_IMAGE}
+                            docker tag madbakoyoko/dockerpipelinehelloworld:latest ${DOCKER_IMAGE}:latest
                         """
 
                         // Push the newly tagged image
