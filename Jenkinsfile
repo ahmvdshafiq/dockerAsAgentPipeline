@@ -31,13 +31,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://index.docker.io/v1/" ]) {
-                        // Tag the image with the build number
-               
-                        // Push the newly tagged image
-                        sh """
-                            docker push docker.io/${DOCKER_IMAGE}
-                        """
+                    docker.withRegistry('https://registry-1.docker.io/v2/', 'dockerHub_creds_id') {
+                      dockerImage.push(${docker_image})
                     }
                 }
             }
