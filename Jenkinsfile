@@ -3,7 +3,7 @@ pipeline {
 
     environment{
         dockerHub_creds_id = '1c9e152e-526e-4ee6-a18d-abb0c7f5dac0'
-        docker_image = 'madbakoyoko/dockerPipelineHelloWorld'
+        docker_image = 'madbakoyoko/dockerpipelinehelloworld'
     }
 
     stages {
