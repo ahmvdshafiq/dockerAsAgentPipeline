@@ -38,7 +38,7 @@ pipeline {
 
                         // Push the newly tagged image
                         sh """
-                            docker push docker.io/${DOCKER_IMAGE}:${env.BUILD_NUMBER}
+                            docker push docker.io/${DOCKER_IMAGE}:latest
                         """
                     }
                 }
