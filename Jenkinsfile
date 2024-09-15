@@ -31,14 +31,12 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', dockerHub_creds_id) {
-                        sh """
-                            docker tag madbakoyoko/dockerpipelinehelloworld:latest ${DOCKER_IMAGE}:latest
-                        """
-
+                    withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
+                        // Tag the image with the build number
+               
                         // Push the newly tagged image
                         sh """
-                            docker push docker.io/${DOCKER_IMAGE}:latest
+                            docker push docker.io/${DOCKER_IMAGE}
                         """
                     }
                 }
