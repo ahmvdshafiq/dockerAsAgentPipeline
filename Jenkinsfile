@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', dockerHub_creds_id) {
-                        sh "docker push docker.io/${DOCKER_IMAGE}:${env.BUILD_NUMBER}"
+                        sh "docker push docker.io/${DOCKER_IMAGE}:${env.BUILD_NUMBER} -a"
                     }
                 }
             }
