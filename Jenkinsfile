@@ -23,7 +23,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker build -t ${docker_image}:${env.BUILD_NUMBER} ."
+                    sh "docker build -t ${docker_image} ."
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', dockerHub_creds_id) {
                         sh """
-                            docker tag ${DOCKER_IMAGE}:latest ${DOCKER_IMAGE}:${env.BUILD_NUMBER}
+                            docker tag ${env.BUILD_NUMBER} ${DOCKER_IMAGE}
                         """
 
                         // Push the newly tagged image
