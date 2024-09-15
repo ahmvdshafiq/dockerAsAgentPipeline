@@ -33,7 +33,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', dockerHub_creds_id) {
                         sh """
-                            docker tag ${env.BUILD_NUMBER} ${DOCKER_IMAGE}
+                            docker tag ${DOCKER_IMAGE}
                         """
 
                         // Push the newly tagged image
