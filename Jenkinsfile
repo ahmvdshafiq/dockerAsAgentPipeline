@@ -23,7 +23,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${docker_image}:${env.BUILD_NUMBER}")
+                    docker.build("${docker_image}")
                 }
             }
         }
@@ -32,7 +32,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', dockerHub_creds_id) {
-                        docker.image("${docker_image}:${env.BUILD_NUMBER}").push()
+                        // Push Docker image
+                        sh "docker push ${DOCKER_IMAGE}"
                     }
                 }
             }
