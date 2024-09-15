@@ -23,7 +23,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh "docker push ${DOCKER_IMAGE}"
+                    docker.build("${docker_image}:${env.BUILD_NUMBER}")
                 }
             }
         }
