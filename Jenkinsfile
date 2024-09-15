@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', dockerHub_creds_id) {
-                      docker.image(${docker_image}).push()
+                      docker.image("${docker_image}").push()
                     }
                 }
             }
